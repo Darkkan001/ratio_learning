@@ -1,0 +1,181 @@
+.slider {
+    display: flex;
+    margin-bottom: 60px;
+    align-items: flex-start;
+    overflow-x: hidden;
+    padding-bottom: 20px;
+}
+.slider__item {
+    position: relative;
+    width: 400px;
+    display: flex;
+    align-items: flex-start;
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 60px 70px 50px;
+    margin-right: 20px;
+    border: 1px solid #9C69E2;
+    z-index: 2;
+    /* 
+     * Формула для позиционирования slider с помощью JS 
+     * 100vw / 2 - ((container.width / 2) + (container.padding / 2)) + testimonials-screen.padding) + (sliderItem.width) + 20px;
+    */
+    transform: translateX(calc((100vw / 2) - ((1117px / 2) + (15px / 2)) + 93px));
+}
+.slider__item::after {
+    border-radius: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;  
+    height: 100%;
+    width: 100%;
+    content: "";
+    background: linear-gradient(to left,
+        rgba(255,255,255, 1) 20%, 
+        rgba(255,255,255, 0) 80%
+  );
+  pointer-events: none; /* so the text is still selectable */
+}
+.slider__item::before {
+    width: 100%;
+    position: absolute;
+    box-shadow: 0px 20px 0px rgba(0, 0, 0, 0.05);
+    height: 40px;
+    bottom: 0;
+    right: 0;
+    content: "";
+    border-radius: 0px 0px 20px 20px;
+    z-index: 1;
+
+}
+.slider__item--active::after {
+    display: none;
+}
+.slider__item--active {
+    width: auto;
+}
+.slider__item--active::before {
+    box-shadow: 0px 20px 0px rgba(0, 0, 0, 0.1);
+}
+.slider__item-row {
+    margin-left: 30px;
+    margin-top: 10px;
+}
+.slider__item-title {
+    position: relative;
+    z-index: 1;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 160%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.005em;
+    color: #212353;
+}
+.slider__item-tag {
+    position: relative;
+    z-index: 2;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 160%;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.01em;
+    color: #9C69E2;
+}
+.slider__item-description {
+    max-width: 180px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-top: 19px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 180%;
+    color: #4B5D68;
+}
+.slider__item--active .slider__item-description {
+    max-width: 100%;
+}
+.slider__controls {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 93px;
+    padding-right: 76px;
+    padding-bottom: 60px;
+}
+.slider-controls__pagination {
+    display: flex;
+    align-items: center;
+}
+.slider-controls__dot {
+    width: 5px;
+    height: 5px;
+    background: #FFFFFF;
+    border-radius: 100%;
+    margin-right: 10px;
+}
+.slider-controls__dot--active {
+    width: 10px;
+    height: 10px;
+    background: #F063B8
+}
+.slider-controls__buttons {
+    display: flex;
+    align-items: center;
+}
+.slider-controls__button-prev {
+    margin-right: 20px;
+}
+@media (max-width: 1024px) {
+    .slider {
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+    .slider__item--active {
+        width: calc(100vw - (93px * 2) - 60px);
+    }
+    .slider__item {
+    /* 
+        * Формула для позиционирования slider с помощью JS 
+         100vw / 2 - ((container.width / 2) + (container.padding / 2)) + testimonials-screen.padding) + (sliderItem.width) + 20px;
+    */
+        transform: translateX(-50%);
+        left: 50%;
+        max-width: 100%;
+        padding: 20px 25px 15px;
+    }
+    .slider .slider__item:not(:first-child) {
+        display: none;
+    }
+    .slider__controls {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-bottom: 24px;
+    }
+    .slider__item-image {
+        width: 45px;
+        height: 45px;
+    }
+}
+@media (max-width: 767px) {
+    .slider__item {
+        flex-direction: column;
+    }
+    .slider__item-row {
+        margin-left: 0;
+    }
+    .slider__item--active {
+        width: calc(100vw - 60px);
+    }
+    .slider__item-description {
+        max-width: 100%;
+        white-space: normal;
+        text-overflow: unset;
+        font-size: 14px;
+    }
+    
+}
