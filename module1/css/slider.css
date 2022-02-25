@@ -16,22 +16,26 @@
     margin-right: 20px;
     border: 1px solid #9C69E2;
     z-index: 2;
-    /* 
-     * Формула для позиционирования slider с помощью JS 
+    /*
+     * Формула для позиционирования slider с помощью JS
      * 100vw / 2 - ((container.width / 2) + (container.padding / 2)) + testimonials-screen.padding) + (sliderItem.width) + 20px;
     */
+    /*
+    ** TODO: перегруженная формула, плохо для производительности
+    ** лучше обойтись обычной медиа адаптацией
+     */
     transform: translateX(calc((100vw / 2) - ((1117px / 2) + (15px / 2)) + 93px));
 }
 .slider__item::after {
     border-radius: 20px;
     position: absolute;
     bottom: 0;
-    right: 0;  
+    right: 0;
     height: 100%;
     width: 100%;
     content: "";
     background: linear-gradient(to left,
-        rgba(255,255,255, 1) 20%, 
+        rgba(255,255,255, 1) 20%,
         rgba(255,255,255, 0) 80%
   );
   pointer-events: none; /* so the text is still selectable */
@@ -39,6 +43,9 @@
 .slider__item::before {
     width: 100%;
     position: absolute;
+    /*
+    ** TODO: 'px' в нулевых значениях опускаем
+     */
     box-shadow: 0px 20px 0px rgba(0, 0, 0, 0.05);
     height: 40px;
     bottom: 0;
@@ -139,8 +146,8 @@
         width: calc(100vw - (93px * 2) - 60px);
     }
     .slider__item {
-    /* 
-        * Формула для позиционирования slider с помощью JS 
+    /*
+        * Формула для позиционирования slider с помощью JS
          100vw / 2 - ((container.width / 2) + (container.padding / 2)) + testimonials-screen.padding) + (sliderItem.width) + 20px;
     */
         transform: translateX(-50%);
@@ -152,6 +159,9 @@
         display: none;
     }
     .slider__controls {
+        /*
+        ** TODO: лучше прописать одной строкой padding: 0 0 24px 0
+         */
         padding-left: 0px;
         padding-right: 0px;
         padding-bottom: 24px;
@@ -177,5 +187,5 @@
         text-overflow: unset;
         font-size: 14px;
     }
-    
+
 }
